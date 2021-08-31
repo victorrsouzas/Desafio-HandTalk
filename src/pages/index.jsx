@@ -92,7 +92,7 @@ const Customer = () => {
             try {
                 await deleteCustomer(id);
                 getlist();
-                toast.success('Customer Deleted Successfully');
+                toast.success('Usuario deletado com sucesso');
             } catch (error) {
                 toast.error(error.message);
             }

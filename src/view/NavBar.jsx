@@ -69,7 +69,6 @@ const NavBar = (props) => {
                         open={open}
                         onClose={handleCloseMenu}
                         >
-                        <MenuItem>Perfil</MenuItem>
                         <MenuItem onClick={handleClose}>Sair</MenuItem>
                         </Menu>
                     </div>

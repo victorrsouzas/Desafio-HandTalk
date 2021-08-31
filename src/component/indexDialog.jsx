@@ -13,7 +13,7 @@ const CustomerDialog = (props) => {
             onClose={props.close}
             aria-labelledby="max-width-dialog-title"
         >
-            <DialogTitle>{props.formmode ? 'Add Novo' : 'Update'}  Amigo</DialogTitle>
+            <DialogTitle>{props.formmode ? '' : 'Update'}</DialogTitle>
             <ValidatorForm
                 onSubmit={props.addCustomer}
             >
@@ -24,7 +24,7 @@ const CustomerDialog = (props) => {
                                 variant="outlined"
                                 margin="normal"
                                 fullWidth
-                                label="First Name"
+                                label="Primeiro Nome"
                                 onChange={props.changeFirstname}
                                 name="firstname"
                                 value={props.firstname}
@@ -38,7 +38,7 @@ const CustomerDialog = (props) => {
                                 variant="outlined"
                                 margin="normal"
                                 fullWidth
-                                label="Last Name"
+                                label="Ultimo Nome"
                                 onChange={props.changeLastname}
                                 name="lastname"
                                 value={props.lastname}
@@ -52,7 +52,7 @@ const CustomerDialog = (props) => {
                                 variant="outlined"
                                 margin="normal"
                                 fullWidth
-                                label="Phone Number"
+                                label="Telefone ou Celular"
                                 onChange={props.changephonenumber}
                                 name="phonenumber"
                                 value={props.phonenumber}
@@ -79,10 +79,10 @@ const CustomerDialog = (props) => {
                 </DialogContent>
                 <DialogActions>
                     <Button type="submit" color="secondary">
-                        {props.formmode ? 'Add' : 'Update'}
+                        {props.formmode ? 'Adicionar' : 'Update'}
                     </Button>
                     <Button onClick={props.close} color="primary">
-                        Close
+                        Fechar
                     </Button>
                 </DialogActions>
             </ValidatorForm>
