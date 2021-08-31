@@ -15,10 +15,7 @@ export const getCustomers = async () => {
                 doc.data().firstname,
                 doc.data().lastname,
                 doc.data().phonenumber,
-                doc.data().maritalstatus,
-                doc.data().gender,
-                doc.data().postcode,
-                doc.data().city
+                doc.data().email,
             );
 
             array.push(customer);

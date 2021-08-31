@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) => ({
         background: 'linear-gradient(45deg, white 10%, 30%, orange 90%)',
     }, 
     title: {
-        flexGrow: 1
+        flexGrow: 1,
+        color: 'black'
     }
 }));
 
@@ -23,6 +24,11 @@ const NavBar = (props) => {
     const handleClose = () => {
         localStorage.removeItem('user');
         props.setUserState();
+        setAnchorEl(null);
+    }
+
+
+    const handleCloseMenu = () => {
         setAnchorEl(null);
     }
 
@@ -61,7 +67,7 @@ const NavBar = (props) => {
                             horizontal: 'right',
                         }}
                         open={open}
-                        onClose={handleClose}
+                        onClose={handleCloseMenu}
                         >
                         <MenuItem>Perfil</MenuItem>
                         <MenuItem onClick={handleClose}>Sair</MenuItem>

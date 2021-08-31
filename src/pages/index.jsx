@@ -40,15 +40,12 @@ const Customer = () => {
     const [firstname, setFirstName] = useState('');
     const [lastname, setLastName] = useState('');
     const [phonenumber, setPhoneNumber] =  useState('');
-    const [maritalstatus, setMaritalStatus] = useState('Single');
-    const [gender, setGender] = useState('Female');
-    const [city, setCity] = useState('');
-    const [postcode, setPostCode] = useState('');
+    const [email, setEmail] = useState('');
     const override =`
         display: flex;
         align-items: center;
         justify-content: center;    
-        border-color: red;
+        border-color: orange;
     `;
     const handleClose = () => {
         setOpen(false);
@@ -62,17 +59,8 @@ const Customer = () => {
     const handlePhoneNumber = (event) => {
         setPhoneNumber(event.target.value);
     }
-    const handleMaritalStatus = (event) => {
-        setMaritalStatus(event.target.value);
-    }
-    const handleGender = (event) => {
-        setGender(event.target.value);
-    }
-    const handleCity = (event) => {
-        setCity(event.target.value);
-    }
-    const handlePostCode = (event) => {
-        setPostCode(event.target.value);
+    const handleEmail = (event) => {
+        setEmail(event.target.value);
     }
     const getlist = async () => { 
         try {
@@ -93,10 +81,7 @@ const Customer = () => {
                  setFirstName(response.firstname);
                  setLastName(response.lastname);
                  setPhoneNumber(response.phonenumber);
-                 setMaritalStatus(response.maritalstatus);
-                 setGender(response.gender);
-                 setCity(response.city);
-                 setPostCode(response.postcode);
+                 setEmail(response.email);
                  setOpen(true);
             } catch (error) {
                 toast.error(error.message);
@@ -118,10 +103,7 @@ const Customer = () => {
             setFirstName('');
             setLastName('');
             setPhoneNumber('');
-            setPostCode('');
-            setCity('');
-            setMaritalStatus('Single');
-            setGender('Female'); 
+            setEmail(''); 
     }
 
     const addCustomerHandler = async () => {
@@ -130,35 +112,26 @@ const Customer = () => {
                      firstname,
                      lastname,
                      phonenumber,
-                     maritalstatus,
-                     gender,
-                     city,
-                     postcode
+                     email,
                  }
                 if (formMode) {
                     await addCustomer(customer);
-                    toast.success('Customer Added Successfully');
+                    toast.success('Usuario Adicionado com Sucesso');
                     getlist();
                     setOpen(false);
                     setFirstName('');
                     setLastName('');
                     setPhoneNumber('');
-                    setPostCode('');
-                    setCity('');
-                    setMaritalStatus('Single');
-                    setGender('Female'); 
+                    setEmail('');
                 }else {
                     await updateCustomer(custId, customer);
-                    toast.success('Customer Updated Successfully');
+                    toast.success('Usuario Atualizado Sucesso');
                     getlist();
                     setOpen(false);
                     setFirstName('');
                     setLastName('');
                     setPhoneNumber('');
-                    setPostCode('');
-                    setCity('');
-                    setMaritalStatus('Single');
-                    setGender('Female'); 
+                    setEmail(''); 
                 }
             } catch (error) {
                 toast.error(error.message);
@@ -175,7 +148,7 @@ const Customer = () => {
                 <Grid container>
                     <Grid item xs={8}>
                     <Typography className={classes.title} variant="h6" component="div">
-                        All Customers
+                        Agenda
                     </Typography>
                     </Grid>
                     <Grid item xs={4}>
@@ -185,18 +158,15 @@ const Customer = () => {
                         onClick={handleAdd}
                         className={classes.button}
                         startIcon={<AddCircle/>}
-                    >Add</Button>
+                    />
                     </Grid>
                 </Grid>
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
-                            <TableCell className={classes.head}>Full Name</TableCell>
-                            <TableCell className={classes.head}>Phone</TableCell>
-                            <TableCell className={classes.head}>Marital Status</TableCell>
-                            <TableCell className={classes.head}>Gender</TableCell>
-                            <TableCell className={classes.head}>City</TableCell>
-                            <TableCell className={classes.head}>Post Code</TableCell>
+                            <TableCell className={classes.head}>Nome</TableCell>
+                            <TableCell className={classes.head}>Telefone</TableCell>
+                            <TableCell className={classes.head}>Email</TableCell>
                             <TableCell className={classes.head}>Actions</TableCell>
                         </TableRow>
                     </TableHead>
@@ -217,10 +187,7 @@ const Customer = () => {
                                 <TableRow key={cust.id}>
                                   <TableCell>{cust.firstname} {cust.lastname}</TableCell>
                                   <TableCell>{cust.phonenumber}</TableCell>
-                                  <TableCell>{cust.maritalstatus}</TableCell>
-                                  <TableCell>{cust.gender}</TableCell>
-                                  <TableCell>{cust.city}</TableCell>
-                                  <TableCell>{cust.postcode}</TableCell>
+                                  <TableCell>{cust.email}</TableCell>
                                   <TableCell>
                                     <IconButton onClick={() => getOneCustomer(cust.id)} color="primary" aria-label="update customer">
                                             <Edit />
@@ -245,17 +212,11 @@ const Customer = () => {
                 firstname={firstname}
                 lastname={lastname}
                 phonenumber={phonenumber}
-                postcode={postcode}
-                city={city}
-                status={maritalstatus}
-                gender={gender}
+                email={email}
                 changeFirstname={handleFirstName}
                 changeLastname={handleLastName}
                 changephonenumber={handlePhoneNumber}
-                changepostcode={handlePostCode}
-                changeCity={handleCity}
-                changeStatus={handleMaritalStatus}
-                changeGender={handleGender}
+                changeEmail={handleEmail}
                 addCustomer={addCustomerHandler}
             />
         </Container>

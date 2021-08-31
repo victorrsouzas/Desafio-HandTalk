@@ -44,9 +44,9 @@ const Login = (props) => {
     const [loading, setLoading] = useState(false);
 
     const override = `
-        display: block;
+        display: flex;
         margin-left: 100px;
-        border-color: red;
+        border-color: orange;
     `;
     const handleEmail = (event) => {
         setEmail(event.target.value);
